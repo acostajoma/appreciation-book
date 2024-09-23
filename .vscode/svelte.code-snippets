@@ -124,7 +124,7 @@
 
 	"Svelte children": {
 		"scope": "svelte",
-		"prefix": "svcomponentmarkdown",
+		"prefix": "svchildren",
 		"body": [
 			"<script lang=\"ts\">",
 			"\timport type { Snippet } from 'svelte';",
