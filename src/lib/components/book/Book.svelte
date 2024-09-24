@@ -30,7 +30,7 @@
 </div>
 
 <div class="button-container {isFullScreen ? 'rotated-button' : ''}">
-	<Button onclick={fullScreen} additionalClasses="text-xs"
+	<Button onclick={fullScreen} additionalClasses="text-xs w-32"
 		>{isFullScreen ? 'Exit ' : ''}Full screen</Button
 	>
 </div>
@@ -115,9 +115,11 @@
 	.button-container {
 		position: absolute;
 		bottom: 0px;
+		right: 0px;
 	}
 	.rotated-button {
-		transform: translate(-30px, -50px) rotate(90deg);
+		transform: translate(-20px, -116px) rotate(90deg);
+		left: 100%;
 	}
 	@media (min-width: 520px) {
 		.book.full-screen {
