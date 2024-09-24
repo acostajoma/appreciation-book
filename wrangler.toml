@@ -1,0 +1,24 @@
+name = "appreciation-book"
+compatibility_date = "2024-09-24"
+pages_build_output_dir = ".svelte-kit/cloudflare"
+compatibility_flags = ["nodejs_compat"]
+
+
+[[d1_databases]]
+binding = "DB"                                       # i.e. available in your Worker on env.DB
+database_name = "appreciation-book-dev"
+database_id = "c898c20f-5320-4ba5-b7bd-f3f2359a1476"
+preview_database_id = "DB"
+
+[env.preview]
+[[d1_databases]]
+binding = "DB"                                       # i.e. available in your Worker on env.DB
+database_name = "appreciation-book-preview"
+database_id = "689b22c2-129b-44cd-aba2-4579b57e9963"
+preview_database_id = "DB"
+
+[env.production]
+[[d1_databases]]
+binding = "DB"                                       # i.e. available in your Worker on env.DB
+database_name = "appreciation-book-prod"
+database_id = "781a737f-6008-4e60-9775-a9efee057eea"
