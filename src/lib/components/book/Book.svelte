@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Page from '$lib/components/book/Page.svelte';
+	import Button from '../Button.svelte';
 
 	type Props = {
 		pages: Book.Page[];
@@ -8,10 +9,16 @@
 	let { pages }: Props = $props();
 	// Maximum Range is 24 pages
 	let pageRange = $derived(Array.from({ length: pages.length + 1 }, (_, index) => index));
+	let isFullScreen = $state(false);
+
+	const fullScreen = () =>
+		isFullScreen ? document.exitFullscreen() : document.body.requestFullscreen();
 </script>
 
+<svelte:document onfullscreenchange={() => (isFullScreen = !isFullScreen)} />
+
 <div class="wrapper">
-	<div class="book">
+	<div class="book" class:full-screen={isFullScreen}>
 		{#each pageRange as pageNumber}
 			<input type="radio" name="book-1" id="c{pageNumber}" />
 		{/each}
@@ -22,11 +29,18 @@
 	</div>
 </div>
 
+<div class="button-container {isFullScreen ? 'rotated-button' : ''}">
+	<Button onclick={fullScreen} additionalClasses="text-xs"
+		>{isFullScreen ? 'Exit ' : ''}Full screen</Button
+	>
+</div>
+
 <style>
 	.wrapper {
 		/* or any other parent wrapper */
 		margin: 0 auto;
 		display: flex;
+		flex-direction: column;
 		height: 100lvh;
 		width: 100%;
 		perspective: 1000px;
@@ -39,14 +53,13 @@
 		--c: 0;
 		display: flex;
 		margin: auto;
-		width: 150px;
+		width: 160px;
 		/*1* let pointer event go trough pages of lower Z than .book */
 		pointer-events: none;
 		transform-style: preserve-3d;
 		transition: translate 1s;
 		translate: calc(min(var(--c), 1) * 50%) 0%;
-		/* DEMO ONLY: incline on the X axis for pages preview */
-		rotate: 1 0 0 25deg;
+		rotate: 1 0 0 30deg;
 
 		[name^='book'] {
 			display: none;
@@ -91,9 +104,32 @@
 			--c: 12;
 		}
 	}
+
+	.book.full-screen {
+		width: 250px;
+		transform: rotateZ(90deg) rotateX(-15deg);
+		translate: 0% calc(min(var(--c), 1) * 50%);
+		rotate: 1 0 0 0deg;
+	}
+
+	.button-container {
+		position: absolute;
+		bottom: 0px;
+	}
+	.rotated-button {
+		transform: translate(-30px, -50px) rotate(90deg);
+	}
 	@media (min-width: 520px) {
+		.book.full-screen {
+			transform: rotateZ(0);
+			translate: calc(min(var(--c), 1) * 50%), 0%;
+			rotate: 1 0 0 30deg;
+		}
 		.book {
 			width: 220px;
+		}
+		.button-container {
+			display: none;
 		}
 	}
 	@media (min-width: 768px) {
