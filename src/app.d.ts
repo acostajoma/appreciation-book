@@ -3,7 +3,20 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			session: Session | null;
+			user: User | null;
+			authenticatedUser: boolean;
+			lucia: Lucia;
+			db: D1Database;
+			prismaClient: PrismaClient<
+				{
+					adapter: PrismaD1;
+				},
+				never,
+				DefaultArgs
+			>;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		interface Platform {
