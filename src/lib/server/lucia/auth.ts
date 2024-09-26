@@ -1,7 +1,11 @@
+import type { PrismaClient } from '@prisma/client/extension';
 import { dev } from '$app/environment';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
-import type { PrismaClient } from '@prisma/client/extension';
 import { Lucia } from 'lucia';
+import { Google } from 'arctic'
+import {GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URL} from '$env/static/private'; 
+
+export const google = new Google(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URL);
 
 export function initializeLucia(client: PrismaClient) {
 	const adapter = new PrismaAdapter(client.session, client.user);

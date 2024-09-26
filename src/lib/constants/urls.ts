@@ -7,8 +7,10 @@ export const authFAQ = '/authentication-issues';
 export const signupUrl = '/sign-up';
 export const resetPasswordUrl = '/reset-password';
 export const books = '/books'
+export const googleSignInUrl = '/login/google'
+export const googleCallbackUrl = '/login/google/callback';
 
-/** * Unprotected Routes that logged users should not see for a better experience */
+/** Unprotected Routes that logged users should not see for a better experience */
 export const unprotectedUrls = new Set([
 	loginUrl,
 	signupUrl,
@@ -16,6 +18,8 @@ export const unprotectedUrls = new Set([
 	forgotPasswordUrl,
 	passwordResetEmailConfirmation,
 	resetPasswordUrl,
+	googleCallbackUrl,
+	googleSignInUrl,
 ]);
 export const onlyWithActiveSessionUrls = new Set([validateUserUrl, passwordChangedUrl]);
 

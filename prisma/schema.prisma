@@ -10,9 +10,9 @@ datasource db {
 
 model User {
   id            String  @id
-  email         String
+  email         String?
   emailVerified Boolean @default(false)
-  passwordHash  String
+  passwordHash  String?
 
   sessions             Session[]
   verificationCodes    VerificationCode[]
@@ -22,13 +22,13 @@ model User {
 }
 
 model OAuthAccount {
-  provider_id      String
-  provider_user_id String
-  user_id          String
+  providerId     String
+  providerUserId String
+  userId         String
 
-  user User @relation(fields: [user_id], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
-  @@id([provider_id, provider_user_id])
+  @@id([providerId, providerUserId])
 }
 
 model Session {

@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Session;
+DROP TABLE IF EXISTS OAuthAccount;
+DROP TABLE IF EXISTS VerificationCode;
+DROP TABLE IF EXISTS VerificationAttempt;
+DROP TABLE IF EXISTS PasswordResetToken;

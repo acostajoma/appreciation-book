@@ -28,6 +28,15 @@ export default [
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: [
+			'build/',
+			'.svelte-kit/',
+			'dist/',
+			'.wrangler/',
+			'.vscode/',
+			'database/',
+			'/node_modules',
+			'.history/',
+		],
 	}
 ];

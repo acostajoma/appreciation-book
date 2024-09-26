@@ -13,16 +13,18 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"create-migration": "npx wrangler d1 migrations create buscamos-casa-dev-db $npm_package_config_migrationFileName",
+		"create-migration": "npx wrangler d1 migrations create appreciation-book-dev $npm_package_config_migrationFileName",
 		"migrate": "npx prisma migrate diff --from-empty --to-schema-datamodel ./prisma/schema.prisma --script --output migrations/$npm_package_config_migrationFile",
-		"apply-migration-locally": "npx wrangler d1 migrations apply buscamos-casa-dev-db --local"
+		"apply-migration-locally": "npx wrangler d1 migrations apply appreciation-book-dev --local",
+		"drop-tables": "npx wrangler d1 execute appreciation-book-dev --file ./database/drop.sql",
+		"restart-db": "npm run drop-tables && npm run create-migration && npm run migrate && npm run apply-migration-locally && npx prisma generate"
 	},
 	"config": {
-		"migrationFileName": "create_user_auth_tables",
-		"migrationFile": "0001_create_user_auth_tables.sql"
+		"migrationFileName": "create_user_table",
+		"migrationFile": "0001_create_user_table.sql"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20240919.0",
+		"@cloudflare/workers-types": "^4.20240925.0",
 		"@playwright/test": "^1.47.2",
 		"@sveltejs/adapter-cloudflare": "^4.7.2",
 		"@sveltejs/kit": "^2.5.28",
@@ -35,10 +37,15 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.44.0",
 		"globals": "^15.9.0",
+		"i": "^0.3.7",
+		"npm": "^10.8.3",
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.6",
-		"prisma": "^5.19.1",
+		"prisma": "^5.20.0",
+		"stylelint": "^16.9.0",
+		"stylelint-config-recommended": "^14.0.1",
+		"stylelint-config-tailwindcss": "^0.0.7",
 		"svelte": "5.0.0-next.257",
 		"svelte-add": "^2.7.3",
 		"svelte-check": "^4.0.2",
@@ -55,9 +62,10 @@
 		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@noble/hashes": "^1.5.0",
 		"@prisma/adapter-d1": "^5.20.0",
-		"@prisma/client": "^5.19.1",
+		"@prisma/client": "^5.20.0",
 		"arctic": "^1.9.2",
 		"lucia": "^3.2.0",
-		"oslo": "^1.2.1"
+		"oslo": "^1.2.1",
+		"zod": "^3.23.8"
 	}
 }
