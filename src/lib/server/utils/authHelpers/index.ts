@@ -120,6 +120,7 @@ export async function verifyEmailCode(
 	}
 }
 
+//@todo solve this issue
 export const validateAuthForm: ValidateAuthForm = async (request, schema, prismaClient) => {
 	const formData = await request.formData();
 	const confirm_password = formData.has('confirm_password');
