@@ -3,28 +3,37 @@
 	import CenteredLayout from '$lib/components/CenteredLayout.svelte';
 	import Form from '$lib/components/Form/Form.svelte';
 	import Input from '$lib/components/Form/Input.svelte';
-	import { forgotPasswordUrl, signupUrl } from '$lib/constants/urls';
 	import { setContext } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
 	import type { PageData } from './$types';
 	import AuthProviders from '$lib/components/SignupLinks/AuthProviders.svelte';
+	import { loginUrl } from '$lib/constants/urls';
 	import CenteredCard from '$lib/components/CenteredCard.svelte';
 
-	type Props = { data: PageData };
+	type Props = {
+		data: PageData;
+	};
+
 	let { data }: Props = $props();
-	const formName = 'log-in';
-	setContext(formName, superForm(data.form, { onError: 'apply' }));
+
+	const formName = 'sign-up';
+	setContext(
+		formName,
+		superForm(data.form, {
+			onError: 'apply',
+		}),
+	);
 </script>
 
-<CenteredLayout title="Sign in to your account">
+<CenteredLayout title="Create an account">
 	<CenteredCard>
-		<Form name={formName} class="mx-auto flex w-full max-w-sm flex-col space-y-6">
+		<Form name={formName} class="w-full max-w-sm flex flex-col  mx-auto space-y-6">
 			<Input
 				label="Email Address"
-				id="email-log-in"
+				id="email-sign-up"
 				name="email"
 				required
-				placeholder="example@gmail.com"
+				placeholder="ejemplo@gmail.com"
 				type="email"
 				autocomplete="email"
 				{formName}
@@ -35,25 +44,28 @@
 				name="password"
 				required
 				type="password"
-				autocomplete="current-password"
+				autocomplete="new-password"
 				{formName}
 			/>
-			<Button {formName} additionalClasses="mt-4">Sign In</Button>
-			<Button
-				href={forgotPasswordUrl}
-				useButtonStyle={false}
-				additionalClasses="mt-4 text-center text-gray-800"
-			>
-				Forgot your password?
-			</Button>
+			<Input
+				label="Password Confirmation"
+				id="confirm-sign-up"
+				name="confirm_password"
+				required
+				type="password"
+				autocomplete="new-password"
+				{formName}
+			/>
+
+			<Button {formName} additionalClasses="mt-4">Sign Up</Button>
 		</Form>
 		<AuthProviders />
 
 		{#snippet belowCard()}
 			<p class="mt-10 text-center text-sm text-gray-500">
-				Not a member?
-				<a href={signupUrl} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-					>Create an account</a
+				Have an account?
+				<a href={loginUrl} class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+					>Log In</a
 				>
 			</p>
 		{/snippet}

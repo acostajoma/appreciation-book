@@ -9,6 +9,19 @@ declare global {
             email:string,
             email_verified: boolean
         }
+        interface Facebook {
+            id : string;
+            name: string;
+            picture: {
+                data : {
+                    height: number;
+                    is_silhouette: boolean,
+                    url: string,
+                    width: number
+                }
+            },
+            email?:string
+        }
     }
 }
 

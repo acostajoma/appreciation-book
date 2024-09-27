@@ -9,6 +9,6 @@
 	let { children }: Props = $props();
 </script>
 
-<div class="flex min-h-screen flex-1 flex-col overflow-hidden">
+<div class="flex min-h-screen flex-1 flex-col overflow-hidden bg-gray-50">
 	{@render children()}
 </div>

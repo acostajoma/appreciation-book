@@ -9,6 +9,8 @@ export const resetPasswordUrl = '/reset-password';
 export const books = '/books'
 export const googleSignInUrl = '/login/google'
 export const googleCallbackUrl = '/login/google/callback';
+export const facebookSignInUrl = '/login/facebook'
+export const facebookCallbackUrl = '/login/facebook/callback';
 
 /** Unprotected Routes that logged users should not see for a better experience */
 export const unprotectedUrls = new Set([
@@ -20,6 +22,8 @@ export const unprotectedUrls = new Set([
 	resetPasswordUrl,
 	googleCallbackUrl,
 	googleSignInUrl,
+	facebookCallbackUrl,
+	facebookSignInUrl
 ]);
 export const onlyWithActiveSessionUrls = new Set([validateUserUrl, passwordChangedUrl]);
 

@@ -31,7 +31,7 @@
 </form>
 
 {#if dev && PUBLIC_DEBUG === '1'}
-	<div class="min-w-80 pt-10">
+	<div class="min-w-80 pt-10 fixed bottom-10">
 		<p>This SuperDebug Section will only appear on dev mode</p>
 		<SuperDebug data={$form} />
 	</div>
