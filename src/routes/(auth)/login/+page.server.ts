@@ -47,7 +47,7 @@ export const actions: Actions = {
 		const { id, passwordHash } = userData;
 		const hashedPassword = await sha512(password).toString();
 
-		if (passwordHash !== hashedPassword) {
+		if (!passwordHash || passwordHash !== hashedPassword) {
 			form.message = invalidEmailOrPassword;
 			return fail(400, { form });
 		}

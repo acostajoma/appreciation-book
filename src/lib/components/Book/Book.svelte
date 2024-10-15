@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Page from '$lib/components/book/Page.svelte';
+	import Page from '$lib/components/Book/Page.svelte';
 	import Button from '../Button.svelte';
 
 	type Props = {
@@ -23,8 +23,8 @@
 			<input type="radio" name="book-1" id="c{pageNumber}" />
 		{/each}
 
-		{#each pages as { backPageTitle, frontPageTitle, frontPageImage }, index}
-			<Page sheetNumber={index} {backPageTitle} {frontPageTitle} {frontPageImage} />
+		{#each pages as { backPageTitle, frontPageTitle, frontPageImage, id }, index (id)}
+			<Page sheetNumber={index} {backPageTitle} {frontPageTitle} {id} {frontPageImage} />
 		{/each}
 	</div>
 </div>
@@ -53,6 +53,7 @@
 		--c: 0;
 		display: flex;
 		margin: auto;
+		min-height: 600px;
 		width: 160px;
 		/*1* let pointer event go trough pages of lower Z than .book */
 		pointer-events: none;

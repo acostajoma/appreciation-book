@@ -4,7 +4,8 @@
 		backPageTitle,
 		frontPageImage,
 		backPageImage,
-		sheetNumber
+		id,
+		sheetNumber,
 	}: Book.Page & { sheetNumber: number } = $props();
 </script>
 
@@ -32,7 +33,7 @@
 <style>
 	.page {
 		--thickness: 5;
-		/* PS: Don't go below thickness 0.4 or the pages might transpare */
+		/* PS: Don't go below thickness 0.4 or the pages might transparency */
 		flex: none;
 		display: flex;
 		width: 100%;

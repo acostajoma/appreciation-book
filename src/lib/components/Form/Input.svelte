@@ -14,6 +14,7 @@
 		disabled?: boolean;
 		placeholder?: string;
 		autocomplete?: FullAutoFill | null | undefined;
+		oninput?: (event: Event) => void;
 	};
 	let {
 		label,
@@ -25,10 +26,11 @@
 		required,
 		disabled = false,
 		autocomplete,
+		oninput,
 	}: Props = $props();
 
-	const superformStore: SuperForm<any> = getContext(formName);
-	const { value, errors, constraints } = formFieldProxy(superformStore, name);
+	const superformStore: SuperForm<any> | undefined = getContext(formName);
+	const { value, errors, constraints } = superformStore ? formFieldProxy(superformStore, name) : {};
 </script>
 
 <div>
@@ -44,6 +46,7 @@
 			{required}
 			{disabled}
 			{autocomplete}
+			{oninput}
 			aria-describedby={!required ? `${name}-optional` : undefined}
 			aria-errormessage={`${name}-error`}
 			aria-required={required}

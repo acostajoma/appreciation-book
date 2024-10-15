@@ -7,6 +7,9 @@ compatibility_flags = ["nodejs_compat"]
 d1_databases = [
     { binding = "DB", database_name = "appreciation-book-dev", database_id = "c898c20f-5320-4ba5-b7bd-f3f2359a1476", preview_database_id = "DB" },
 ]
+kv_namespaces = [
+    { binding = "BOOKS_KV_DEV", id = "220215b973ee438e8e211b7b368f18e9", preview_id = "220215b973ee438e8e211b7b368f18e9" },
+]
 
 [env.preview]
 d1_databases = [

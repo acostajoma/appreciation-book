@@ -9,8 +9,9 @@
 		action?: string;
 		name?: string;
 		class?: string;
+		superdebugHorizontalLocation?: 'right-0' | 'left-0';
 	};
-	let { children, action, name, class: _class }: Props = $props();
+	let { children, action, name, class: _class, superdebugHorizontalLocation }: Props = $props();
 
 	const superformStore: SuperForm<any> = getContext(name) || {};
 	const { form, message, enhance } = superformStore;
@@ -31,7 +32,7 @@
 </form>
 
 {#if dev && PUBLIC_DEBUG === '1'}
-	<div class="min-w-80 pt-10 fixed bottom-10">
+	<div class="min-w-80 pt-10 fixed bottom-10 {superdebugHorizontalLocation}">
 		<p>This SuperDebug Section will only appear on dev mode</p>
 		<SuperDebug data={$form} />
 	</div>

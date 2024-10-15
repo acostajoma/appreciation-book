@@ -2,10 +2,11 @@
 declare global {
 	namespace Book {
 		interface Page {
-			frontPageTitle: string;
+			frontPageTitle?: string;
 			frontPageImage?: string;
-			backPageTitle: string;
+			backPageTitle?: string;
 			backPageImage?: string;
+			id: string;
 		}
 	}
 }

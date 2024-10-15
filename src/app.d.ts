@@ -28,7 +28,8 @@ declare global {
 		interface Platform {
 			env: {
 				DB: D1Database;
-				USERDATA_KV: KVNamespace;
+				// USERDATA_KV: KVNamespace;
+				BOOKS_KV_DEV: KVNamespace;
 			};
 			cf: CfProperties;
 			ctx: ExecutionContext;

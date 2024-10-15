@@ -1,5 +1,5 @@
 <script>
-	import Book from '$lib/components/book/Book.svelte';
+	import Book from '$lib/components/Book/Book.svelte';
 </script>
 
 <Book
@@ -15,12 +15,12 @@
 		{ frontPageTitle: 'Pagina 17', backPageTitle: 'Pagina 18' },
 		{ frontPageTitle: 'Pagina 19', backPageTitle: 'Pagina 20' },
 		{ frontPageTitle: 'Pagina 21', backPageTitle: 'Pagina 22' },
-		{ frontPageTitle: 'Pagina 23', backPageTitle: 'Pagina 24' }
+		{ frontPageTitle: 'Pagina 23', backPageTitle: 'Pagina 24' },
 	]}
 />
 
 <style>
-	:global(body) {
+	:global(main) {
 		/* or any other parent wrapper */
 		margin: 0;
 		display: flex;
